@@ -10,36 +10,15 @@
 <body>
     <main>
         <a href="/form">Send a message</a>
-        <div class="message">
-            <p class="name">Ishan Pattnayak</p>
-            <p class="date">1 min ago</p>
-            <p class="content">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Numquam, nemo.</p>
-        </div>
-        <div class="message">
-            <p class="name">Ishan Pattnayak</p>
-            <p class="date">1 min ago</p>
-            <p class="content">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Numquam, nemo.</p>
-        </div>
-        <div class="message">
-            <p class="name">Ishan Pattnayak</p>
-            <p class="date">1 min ago</p>
-            <p class="content">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Numquam, nemo.</p>
-        </div>
-        <div class="message">
-            <p class="name">Ishan Pattnayak</p>
-            <p class="date">1 min ago</p>
-            <p class="content">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Numquam, nemo.</p>
-        </div>
-        <div class="message">
-            <p class="name">Ishan Pattnayak</p>
-            <p class="date">1 min ago</p>
-            <p class="content">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Numquam, nemo.</p>
-        </div>
-        <div class="message">
-            <p class="name">Ishan Pattnayak</p>
-            <p class="date">1 min ago</p>
-            <p class="content">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Numquam, nemo.</p>
-        </div>
+        {{#each records}}
+            <div class="message">
+                <p class="name">{{this.name}}</p>
+                <p class="date">1 min ago</p>
+                <p class="content">{{reduce this.message}}</p>
+            </div>
+        {{else}}
+            <p>No content please add some content</p>
+        {{/each}}
     </main>
 </body>
 </html>

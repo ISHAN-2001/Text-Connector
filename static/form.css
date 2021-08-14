@@ -26,26 +26,36 @@ main{
     margin: 20px 0px;
 }
 
-input[type], textarea{
+input[type="text"]{
     background: transparent;
     padding: 10px;
-    border: 2px solid #000;
+    border: 2px solid grey;
     border-radius: 4px;
     outline: none;
     transition: 0.5s ease-in-out;
+    width: 100%;
 }
-input[type]:focus{
+.message{
+    background: transparent;
+    padding: 10px;
     border: 2px solid #2385cc;
+    border-radius: 4px;
+    outline: none;
+    transition: 0.5s ease-in-out;
+    width: 100%;
+}
+input[type="text"]:focus{
+    border-color: #2385cc;
 }
 
-.inputs textarea :focus{
-border: 2px solid #2385cc !important;
+.message :focus{
+border-color: #2385cc;
 }
 .inputs .btn{
     padding: 7px 13px;
     background: #2385cc;
     color: #fff;
-    border-radius: 3px;
+    border-radius: 5px;
     outline: none;
     border: 2px solid #2385cc !important;
     cursor: pointer;
