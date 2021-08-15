@@ -24,6 +24,20 @@ hbs.handlebars.registerHelper("reduce", function(s) {
   return s.substring(0,50)+"..."
 });
 
+hbs.handlebars.registerHelper("date", function (s) {
+  
+  let d = new Date(s);
+  let now = new Date();
+
+  if (now.getDate() == d.getDate() && now.getMonth() == d.getMonth() && now.getFullYear() == d.getFullYear()) {
+    return "Today";
+  }
+
+  else {
+    return `${d.getDate()}/${d.getMonth()}/${d.getFullYear()}`;
+  }
+})
+
 
 
 

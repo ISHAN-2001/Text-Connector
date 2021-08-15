@@ -16,6 +16,12 @@ main{
     align-items: center;
 }
 
+.heading{
+    color: rgb(7, 7, 61);
+    margin: 20px 0px;
+    font-size: 40px;
+    border-bottom: 5px solid rgb(7, 7, 61);
+}
 .message{
     background: #fff;
     padding: 20px;

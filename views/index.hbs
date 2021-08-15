@@ -9,11 +9,14 @@
 </head>
 <body>
     <main>
+
+        <h2 class="heading">Mini Message Board</h2>
+
         <a href="/form">Send a message</a>
         {{#each records}}
             <div class="message">
                 <p class="name">{{this.name}}</p>
-                <p class="date">1 min ago</p>
+                <p class="date">{{date this.date}}</p>
                 <p class="content">{{reduce this.message}}</p>
             </div>
         {{else}}
