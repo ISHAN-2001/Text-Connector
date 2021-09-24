@@ -5,25 +5,15 @@ let Message = require("../models/message");
 // Home page route.
 router.get('/', function (req, res) {
 
-  // Message.find((err, records) => {
-  //   if (err) {
-  //     // console.log(err)
-  //     res.render('../views/index', { layout: false });
-  // }
-  // else {
-  //     // console.log(records);
-  //     res.render('../views/index', { layout: false, 'records':records });
-  // }
-  // }).lean();
-
-  Message.find().lean() // use lean method when using handlebars template...
+  Message.find()
     .sort({_id:-1})
     .then((records) => {
-      res.render('../views/index', { layout: false, 'records': records });
+
+      //console.log(records);
+      res.render('../views/index', {'records': records });
     })
     .catch(err => {
       console.log(err);
-      res.render('../views/index', { layout: false });
     });
   
 })

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/index.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <main>
+
+        <h2 class="heading">Text Connector</h2>
+
+        <a href="/form">Upload a text</a>
+
+        <% if (records.length> 0) { %>
+
+            <% records.forEach( item=> { %>
+                <div class="message">
+
+                    <p class="name"></p>
+                    <p class="date"> </p>
+                    <p class="content b<%- String(item._id) %>" id="<%- item._id %> ">
+                        <%= item.message %>
+                    </p>
+
+                    <button onclick=" myFunction('b<%- item._id %>')  ">Copy text</button>
+                </div>
+                <% }) %>
+
+                    <% } else {%>
+
+                        <p>No records are here</p>
+
+                        <% } %>
+
+    </main>
+
+    <script>
+
+        function myFunction(id) {
+            console.log(id);
+            var text = document.querySelector(`.${id}`);
+            var range = document.createRange();
+            range.selectNode(text);
+            window.getSelection().addRange(range);
+
+            try {
+                // Now that we've selected the anchor text, execute the copy command
+                var successful = document.execCommand('copy');
+                var msg = successful ? 'successful' : 'unsuccessful';
+                console.log('Copy email command was ' + msg);
+            } catch (err) {
+                console.log('Oops, unable to copy');
+            }
+
+            // Remove the selections - NOTE: Should use
+            // removeRange(range) when it is supported
+            window.getSelection().removeAllRanges();
+        }
+
+    </script>
+</body>
+
+</html>

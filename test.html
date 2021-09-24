@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <p class="bujbs js-emaillink">Lipun nisns iwniwn iwniwn</a></p>
+
+    <p><button class="js-emailcopybtn"><img src="./images/copy-icon.png" /></button></p>
+
+    <script>
+        var copyEmailBtn = document.querySelector('.js-emailcopybtn');
+        copyEmailBtn.addEventListener('click', function (event) {
+            // Select the email link anchor text
+            var emailLink = document.querySelector('.js-emaillink');
+            var range = document.createRange();
+            range.selectNode(emailLink);
+            window.getSelection().addRange(range);
+
+            try {
+                // Now that we've selected the anchor text, execute the copy command
+                var successful = document.execCommand('copy');
+                var msg = successful ? 'successful' : 'unsuccessful';
+                console.log('Copy email command was ' + msg);
+            } catch (err) {
+                console.log('Oops, unable to copy');
+            }
+
+            // Remove the selections - NOTE: Should use
+            // removeRange(range) when it is supported
+            window.getSelection().removeAllRanges();
+        });
+    </script>
+</body>
+
+</html>
