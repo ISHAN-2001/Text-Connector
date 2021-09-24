@@ -68,3 +68,10 @@ border-color: #2385cc;
     background: transparent;
     color: #2385cc;
 }
+
+
+@media only screen and (max-width: 500px) {
+    .form{
+        width: 90vw;
+    }
+  }

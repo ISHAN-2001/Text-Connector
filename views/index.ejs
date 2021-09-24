@@ -22,12 +22,12 @@
                 <div class="message">
 
                     <p class="name"></p>
-                    <p class="date"> </p>
                     <p class="content b<%- String(item._id) %>" id="<%- item._id %> ">
                         <%= item.message %>
                     </p>
 
                     <button onclick=" myFunction('b<%- item._id %>')  ">Copy text</button>
+                    <a href="/delete/<%- item._id %>">Delete Text</a>
                 </div>
                 <% }) %>
 

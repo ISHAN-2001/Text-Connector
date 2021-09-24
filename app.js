@@ -8,12 +8,7 @@ app.use('/static', express.static('static'))
 
 
 // Set up MongoDB
-mongoose.connect('mongodb://localhost:27017/connect', { useNewUrlParser: true, useUnifiedTopology: true });
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function() {
-   console.log("DB Connected !");
-});
+let url  = require('./models/db')
 
 app.set("view engine", "ejs");
 
@@ -25,6 +20,20 @@ app.use(express.urlencoded({ extended: false }));
 var home = require('./routes/index.js');
 app.use('', home);
 
-app.listen(3000, () => {
+
+//-----404 error page------//
+app.use(function(req, res, next) {
+  res.status(404);
+
+  // respond with html page
+  if (req.accepts('html')) {
+    res.render('404');
+    return;
+  }
+
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
   console.log(`Listening on http://127.0.0.1:3000`);
 });

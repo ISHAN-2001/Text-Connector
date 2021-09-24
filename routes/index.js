@@ -14,6 +14,7 @@ router.get('/', function (req, res) {
     })
     .catch(err => {
       console.log(err);
+      res.redirect('/error');
     });
   
 })
@@ -21,31 +22,42 @@ router.get('/', function (req, res) {
 
 // About page route.
 router.get('/form', function (req, res) {
-    res.render("../views/form", {layout:false});
+    res.render("../views/form");
 })
 
 
 router.post('/form', (req, res) => {
   // console.log(req.body);
-  let name = req.body.name;
+  //let name = req.body.name;
   let message = req.body.message;
 
   //Saving message to db
   let m1 = new Message({
-    name: name,
     message:message
   });
 
   m1.save(function (err) {
     if (err) {
       console.log(err);
-      res.send("Error cannot save");
+      res.redirect('/error')
     }
     else {
       res.redirect("/");
     }
   });
 
+})
+
+router.get('/delete/:id',(req, res) => {
+   
+  let id = req.params.id;
+  Message.findByIdAndDelete(id)
+        .then(records => {
+            res.redirect('/');
+        })
+        .catch(err => {
+            res.redirect('/error');
+        });
 })
 
 module.exports = router;

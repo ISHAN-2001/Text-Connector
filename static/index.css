@@ -21,6 +21,7 @@ main{
     margin: 20px 0px;
     font-size: 40px;
     border-bottom: 5px solid rgb(7, 7, 61);
+    text-align: center;
 }
 .message{
     background: #fff;
@@ -43,3 +44,13 @@ main{
 .message .name{
     color: #2385cc;
 }
+
+@media only screen and (max-width: 500px) {
+    main{
+        width: 90vw;
+    }
+    .message{
+        width: 90vw;
+        overflow: scroll;
+    }
+  }
