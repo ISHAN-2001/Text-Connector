@@ -5,9 +5,9 @@ function connect() {
     
     let password = process.env.MONGO_URL; //Type your password here
 
-    let url = "mongodb://localhost:27017/connect"
+    //let url = "mongodb://localhost:27017/connect"
     // Change this url if in cloud
-    //let url = `mongodb+srv://Project:${password}@cluster0.clm6b.mongodb.net/Text_Connector?retryWrites=true&w=majority`;
+    let url = `mongodb+srv://Project:${password}@cluster0.clm6b.mongodb.net/Text_Connector?retryWrites=true&w=majority`;
     
     mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
         .then(() => console.log("Mongo DB Connected"))
