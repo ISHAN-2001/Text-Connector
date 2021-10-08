@@ -5,16 +5,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/index.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="static/css/index.css">
+    <%- include('./partials/headlinks') %>
 </head>
 
 <body>
     <main>
 
-        <h2 class="heading">Text Connector</h2>
+        <h2 class="heading">Text/File Sharer</h2>
 
-        <a href="/form">Upload a text</a>
+        <a href="/form">Upload something...</a><br>
+        <a href="/viewfiles">View Files</a>
 
         <% if (records.length> 0) { %>
 
@@ -33,7 +34,9 @@
 
                     <% } else {%>
 
-                        <p>No records are here</p>
+                        <div class="message">
+                            No Records... Click on upload to add more....
+                        </div>
 
                         <% } %>
 

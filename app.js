@@ -35,5 +35,5 @@ app.use(function(req, res, next) {
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Listening on http://127.0.0.1:3000`);
+  console.log(`Listening on PORT ${PORT}`);
 });

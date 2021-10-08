@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/css/fileview.css">
+    <%- include('./partials/headlinks') %>
+</head>
+
+<body>
+    <main>
+
+        <h2 class="heading">Text/File Sharer</h2>
+
+        <a href="/form">Upload something...</a><br>
+        <a href="/">View Texts</a>
+
+        <% if (records.length> 0) { %>
+
+            <% records.forEach( item=> { %>
+                <div class="message">
+
+                    <div class="submessage">
+                        <img src="static/img/fileicon2.png" alt="" class="file">
+                        <p class="content">
+                            <%= item.inputname %>
+                        </p>
+                    </div>
+
+                    <div class="submessage">
+                        <a href="/download/<%- item._id %>"><img src="static/img/download1.png" alt="" class="link"></a>
+                        <a href="/deletefile/<%- item._id %>"><img src="static/img/bin1.png" alt="" class="link"></a>
+                    </div>
+                </div>
+                <% }) %>
+
+                    <% } else {%>
+
+                        <div class="message">
+                            No Files... Click on upload to add more....
+                        </div>
+
+                        <% } %>
+
+    </main>
+
+</body>
+
+</html>
