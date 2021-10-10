@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
 let multer = require('multer');
-let path = require('path')
+let path = require('path');
+const fs1 = require('fs');
 let fs = require('fs/promises');
 let unlink = fs.unlink;
 
@@ -128,10 +129,6 @@ router.post('/upload', (req, res) => {
         console.log("no file selected error")
         res.redirect('/');
       } else {
-        // console.log(req.file);
-        // //console.log(req.body.name);
-        // console.log(`File uploaded at ${req.file.filename}`);
-        // console.log(`Original filename is ${req.body.name}`);
         storefile(req.body.name , req.file.filename)
         res.redirect('/viewfiles');
       }
@@ -148,10 +145,12 @@ router.get('/download/:id', async (req, res) => {
   try {
     let file = await FileDB.findById(id)
     //console.log(file);
+    await fs1.promises.access(`static/uploads/${file.name}`);
+    //console.log("File present");
     res.download(`static/uploads/${file.name}`);
   } catch (error) {
-    console.error("Error");
-    res.redirect("/error");
+    //console.log("File not found deleting id")
+    res.redirect(`/deletefile/${id}`);
   }
 
 })
@@ -168,9 +167,18 @@ router.get('/deletefile/:id', async (req, res) => {
     const response = await FileDB.findByIdAndDelete(id); //deleting fileinfo in mongodb
     res.redirect('/viewfiles')
   } catch (error) {
-    console.error('there was an error:', error.message);
-    res.redirect('/error');
+    
+    //console.log("File not found error")
+    try {
+      const response = await FileDB.findByIdAndDelete(id);
+      res.redirect('/viewfiles');
+    } catch (error) {
+      //console.log("MongoDb Error -- id not found");
+      res.redirect('/error');
+    }
+
   }
+
 })
 
 module.exports = router;
